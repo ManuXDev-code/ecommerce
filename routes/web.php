@@ -1,0 +1,109 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+
+Route::get('/admin/ajustes', [App\Http\Controllers\AjusteController::class, 'index'])->name('admin.ajustes.index')->middleware('auth');
+
+Route::post('/admin/ajustes/create', [App\Http\Controllers\AjusteController::class, 'store'])->name('admin.ajustes.store')->middleware('auth');
+
+
+//rutas para roles y permisos
+Route::get('/admin/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('admin.roles.index')->middleware('auth');
+Route::get('/admin/roles/create', [App\Http\Controllers\RoleController::class, 'create'])->name('admin.roles.create')->middleware('auth');
+Route::post('/admin/roles/create', [App\Http\Controllers\RoleController::class, 'store'])->name('admin.roles.store')->middleware('auth');
+Route::get('/admin/rol/{id}', [App\Http\Controllers\RoleController::class, 'show'])->name('admin.roles.show')->middleware('auth');
+Route::get('/admin/roles/{id}/edit', [App\Http\Controllers\RoleController::class, 'edit'])->name('admin.roles.edit')->middleware('auth');
+Route::put('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('admin.roles.update')->middleware('auth');
+Route::delete('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('admin.roles.destroy')->middleware('auth');
+
+
+//rutas para usuarios
+Route::get('/admin/usuarios', [App\Http\Controllers\UsuarioController::class, 'index'])->name('admin.usuarios.index')->middleware('auth');
+Route::get('/admin/usuarios/create', [App\Http\Controllers\UsuarioController::class, 'create'])->name('admin.usuarios.create')->middleware('auth');
+Route::post('/admin/usuarios/create', [App\Http\Controllers\UsuarioController::class, 'store'])->name('admin.usuarios.store')->middleware('auth');
+Route::get('/admin/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'show'])->name('admin.usuarios.show')->middleware('auth');
+Route::get('/admin/usuarios/{id}/edit', [App\Http\Controllers\UsuarioController::class, 'edit'])->name('admin.usuarios.edit')->middleware('auth');
+Route::put('/admin/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update'])->name('admin.usuarios.update')->middleware('auth');
+Route::delete('/admin/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy')->middleware('auth');
+Route::post('/admin/usuario/{id}/restaurar', [App\Http\Controllers\UsuarioController::class, 'restore'])->name('admin.usuarios.restore')->middleware('auth');
+
+//rutas para categorias
+Route::get('/admin/categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('admin.categorias.index')->middleware('auth');
+Route::get('/admin/categorias/create', [App\Http\Controllers\CategoriaController::class, 'create'])->name('admin.categorias.create')->middleware('auth');
+Route::post('/admin/categorias/create', [App\Http\Controllers\CategoriaController::class, 'store'])->name('admin.categorias.store')->middleware('auth');
+Route::get('/admin/categoria/{id}', [App\Http\Controllers\CategoriaController::class, 'show'])->name('admin.categorias.show')->middleware('auth');
+Route::get('/admin/categorias/{id}/edit', [App\Http\Controllers\CategoriaController::class, 'edit'])->name('admin.categorias.edit')->middleware('auth');
+Route::put('/admin/categoria/{id}', [App\Http\Controllers\CategoriaController::class, 'update'])->name('admin.categorias.update')->middleware('auth');
+Route::delete('/admin/categoria/{id}', [App\Http\Controllers\CategoriaController::class, 'destroy'])->name('admin.categorias.destroy')->middleware('auth');
+Route::post('/admin/categoria/{id}/restaurar', [App\Http\Controllers\CategoriaController::class, 'restore'])->name('admin.categorias.restore')->middleware('auth'); 
+
+
+//rutas para productos
+Route::get('/admin/productos', [App\Http\Controllers\ProductoController::class, 'index'])->name('admin.productos.index')->middleware('auth');
+Route::get('/admin/productos/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('admin.productos.create')->middleware('auth');
+Route::post('/admin/productos/create', [App\Http\Controllers\ProductoController::class, 'store'])->name('admin.productos.store')->middleware('auth');
+Route::get('/admin/producto/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('admin.productos.show')->middleware('auth');
+Route::get('/admin/producto/{id}/imagenes', [App\Http\Controllers\ProductoController::class, 'imagenes'])->name('admin.productos.imagenes')->middleware('auth');
+Route::post('/admin/producto/{id}/upload_imagenes', [App\Http\Controllers\ProductoController::class, 'upload_imagenes'])->name('admin.productos.upload_imagenes')->middleware('auth');
+Route::delete('/admin/producto/imagen/{id}/destroy_imagenes', [App\Http\Controllers\ProductoController::class, 'destroy_imagenes'])->name('admin.productos.destroy_imagenes')->middleware('auth');
+Route::get('/admin/producto/{id}/edit', [App\Http\Controllers\ProductoController::class, 'edit'])->name('admin.productos.edit')->middleware('auth');
+Route::put('/admin/producto/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('admin.productos.update')->middleware('auth');
+Route::delete('/admin/producto/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('admin.productos.destroy')->middleware('auth');
+Route::post('/admin/producto/{id}/restaurar', [App\Http\Controllers\ProductoController::class, 'restore'])->name('admin.productos.restore')->middleware('auth');    
+
+
+
+//rutas para la parte web
+Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('web.index');
+Route::get('/producto/{id}', [App\Http\Controllers\ProductoController::class, 'detalle_producto'])->name('web.detalle_producto');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('web.dashboard');
+Route::get('/carrito', [App\Http\Controllers\DashboardController::class, 'carrito'])->name('web.carrito');
+Route::get('/web/login', [App\Http\Controllers\DashboardController::class, 'login'])->name('web.login');
+Route::post('/web/login', [App\Http\Controllers\DashboardController::class, 'autenticacion'])->name('web.autenticacion');
+Route::get('/web/registro', [App\Http\Controllers\DashboardController::class, 'registro'])->name('web.registro');
+Route::post('/web/registro', [App\Http\Controllers\DashboardController::class, 'crear_cuenta'])->name('web.crear_cuenta');
+Route::get('/buscar', [App\Http\Controllers\WebController::class, 'buscar_producto'])->name('web.buscar_producto');
+Route::get('/favoritos', [App\Http\Controllers\ProductoFavoritoController::class, 'index'])->name('web.favoritos.index');
+Route::post('/favoritos', [App\Http\Controllers\ProductoFavoritoController::class, 'store'])->name('web.favoritos.store');
+Route::delete('/favorito/{id}', [App\Http\Controllers\ProductoFavoritoController::class, 'destroy'])->name('web.favoritos.destroy');
+
+
+//rutas para el carrito
+Route::get('/carrito', [App\Http\Controllers\CarritoController::class, 'index'])->name('web.carrito.index');
+Route::post('/carrito/agregar', [App\Http\Controllers\CarritoController::class, 'store'])->name('web.carrito.store');
+Route::put('/carrito/actualizar', [App\Http\Controllers\CarritoController::class, 'update'])->name('web.carrito.update');
+Route::delete('/carrito/{id}', [App\Http\Controllers\CarritoController::class, 'destroy'])->name('web.carrito.destroy');
+Route::post('/carrito/limpiar', [App\Http\Controllers\CarritoController::class, 'limpiar'])->name('web.carrito.limpiar');
+
+
+//// rutas para el pago con PayPal
+Route::post('/paypal/pago', [App\Http\Controllers\PaypalController::class, 'pago'])->name('web.paypal.pago');
+Route::get('/paypal/gracias', [App\Http\Controllers\PaypalController::class, 'gracias'])->name('web.paypal.gracias');
+Route::get('/paypal/orden_completado', [App\Http\Controllers\PaypalController::class, 'orden_completado'])->name('web.paypal.orden_completado');
+Route::get('/paypal/cancelar', [App\Http\Controllers\PaypalController::class, 'cancelar'])->name('web.paypal.cancelar');
+
+
+
+Route::fallback(function () {
+    // Verificar si la URL solicitada comienza con '/admin'
+    if (request()->is('admin*')) {
+
+        // 404 para el área de administración
+        // Asegúrate que esta vista exista: resources/views/errors/404-admin.blade.php
+        return response()->view('errors.404-admin', [], 404);
+    }
+
+    // 404 para la web pública
+    // Asegúrate que esta vista exista: resources/views/errors/404.blade.php
+    return response()->view('errors.404', [], 404);
+});
