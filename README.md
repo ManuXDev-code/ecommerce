@@ -30,9 +30,15 @@
 
 ---
 
+## 🛍️ NiceShop — Ecommerce Template
+
 <p align="center">
   <a href="https://bootstrapmade.com/niceshop-bootstrap-ecommerce-template/" target="_blank">
-    <img src="https://bootstrapmade.com/content/templatefiles/NiceShop/NiceShop-bootstrap-website-template.webp" width="100%" alt="NiceShop Ecommerce Template">
+    <img 
+      src="https://bootstrapmade.com/content/templatefiles/NiceShop/NiceShop-bootstrap-website-template.webp"
+      width="100%"
+      alt="NiceShop Ecommerce Template"
+    >
   </a>
 </p>
 
@@ -75,27 +81,73 @@ La aplicación utiliza una arquitectura **MVC**, **MySQL** como sistema de base 
 
 ---
 
+## 🛒 Funcionalidades principales
+
+### 🛍️ Productos
+
+- Listado de productos
+- Categorías
+- Detalle de productos
+- Imágenes de productos
+- Control de información y disponibilidad
+
+### ❤️ Favoritos
+
+Los usuarios pueden agregar productos a su lista de favoritos para acceder rápidamente a ellos posteriormente.
+
+### 🛒 Carrito
+
+Sistema de carrito para:
+
+- Agregar productos
+- Modificar cantidades
+- Eliminar productos
+- Calcular totales
+- Procesar la compra
+
+### 📦 Pedidos
+
+Gestión de pedidos realizados por los usuarios, permitiendo mantener un registro de las compras realizadas.
+
+### 💳 Pagos
+
+Integración del proceso de pago dentro del flujo de compra.
+
+### 👤 Usuarios
+
+Sistema de autenticación y administración de usuarios.
+
+---
+
 ## 🎨 Plantilla NiceShop
 
 El proyecto utiliza **NiceShop – Modern eCommerce Bootstrap Template** como base visual para la tienda.
 
-NiceShop proporciona una interfaz moderna y responsive con diferentes páginas y componentes orientados a comercio electrónico.
+NiceShop proporciona una interfaz moderna y responsive orientada específicamente a proyectos de comercio electrónico.
 
-Entre sus principales elementos se encuentran:
+### 🧩 Elementos utilizados
 
 - 🏠 Página principal
-- 🛍️ Listado de productos
+- 🛍️ Catálogo de productos
 - 📦 Detalle de producto
-- 🛒 Carrito
+- 🛒 Carrito de compras
 - 💳 Checkout
 - 🔐 Login y registro
 - 👤 Cuenta de usuario
+- 🧭 Navegación
 - 📱 Diseño responsive
-- 🧭 Navegación y categorías
+- 🎨 Componentes Bootstrap
 
-La plantilla está construida con **Bootstrap 5.3.8**.
+<p align="center">
+  <a href="https://bootstrapmade.com/niceshop-bootstrap-ecommerce-template/">
+    <img 
+      src="https://img.shields.io/badge/🌐_NiceShop-BootstrapMade-0d6efd?style=for-the-badge"
+      alt="NiceShop"
+    >
+  </a>
+</p>
 
-> **Nota:** NiceShop es utilizado como plantilla frontend del proyecto. La lógica, integración con Laravel y funcionalidades del sistema forman parte del desarrollo de esta aplicación.
+> **Nota:** NiceShop se utiliza como plantilla frontend del proyecto. La integración con Laravel, la lógica de negocio, modelos, controladores, rutas, base de datos y funcionalidades corresponden al desarrollo de esta aplicación.
 
 ---
 
@@ -128,7 +180,7 @@ El proyecto utiliza la arquitectura **MVC (Model-View-Controller)** de Laravel.
                           ▼
                  ┌─────────────────┐
                  │     Rutas       │
-                 │   Laravel       │
+                 │    Laravel      │
                  └────────┬────────┘
                           │
                           ▼
